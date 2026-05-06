@@ -16,5 +16,5 @@ def binaryseach(nums, target):
         return -1
 
 
-a = [-1, 0, 3, 5, 9, 12]
+a = [2,9]
 print(binaryseach(a, 9))

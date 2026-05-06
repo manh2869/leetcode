@@ -3,14 +3,21 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-
-
 def iteratively(root):
-    result = []
-    temp=[]
-    temp.append(root)
-    if temp
+    if root is None:
+        return
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        print(node.val)
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+
+
 a = TreeNode(1)
 a.left = None
 a.right = TreeNode(2)
 a.right.left = TreeNode(3)
+iteratively(a)

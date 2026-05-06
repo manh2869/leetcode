@@ -4,18 +4,31 @@ class tree:
         self.right = right
         self.left = left
 
-
-def dfs(root):
-    if root == None:
+def iteratively(root):
+    if root is None:
         return
-    print(root.val)
-    dfs(root.left)
-    dfs(root.right)
+    i=1
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        i+=1
+        print(i)
+        # print(node.val)
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
 
 
-a = tree(9)
-a.left = tree(10)
-a.right = tree(11)
-a.right.left = tree(12)
-a.right.left.right = tree(13)
-dfs(a)
+
+a = tree(5)
+a.left = tree(2)
+a.right = tree(4)
+a.left.left = tree(1)
+a.right.left = tree(3)
+a.right.right = tree(-1)
+a.left.left.left = tree(5)
+a.left.left.right = tree(1)
+a.right.left.right = tree(6)
+a.right.right.right = tree(8)
+print(iteratively(a))
