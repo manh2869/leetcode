@@ -4,21 +4,13 @@ class tree:
         self.right = right
         self.left = left
 
-def iteratively(root):
-    if root is None:
-        return
-    i=1
-    stack = [root]
-    while stack:
-        node = stack.pop()
-        i+=1
-        print(i)
-        # print(node.val)
-        if node.right:
-            stack.append(node.right)
-        if node.left:
-            stack.append(node.left)
 
+def recusion(root):
+    if root is None:
+        return 0
+    left = recusion(root.left)
+    right = recusion(root.right)
+    return 1 + max(left, right)
 
 
 a = tree(5)
@@ -31,4 +23,4 @@ a.left.left.left = tree(5)
 a.left.left.right = tree(1)
 a.right.left.right = tree(6)
 a.right.right.right = tree(8)
-print(iteratively(a))
+print(recusion(a))
