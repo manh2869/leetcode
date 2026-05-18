@@ -1,18 +1,15 @@
 def minPathSum(grid):
-
-    def find(i, j):
-
-        if i == len(grid) - 1 and j == len(grid[0]) - 1:
-            return grid[i][j]
-        if i == len(grid) - 1:
-            return grid[i][j] + find(i, j + 1)
-        if j == len(grid[0]) - 1:
-            return grid[i][j] + find(i + 1, j)
-        return grid[i][j] + min(find(i + 1, j), find(i, j + 1))
-
-    return find(0, 0)
+    res = [[0 for _ in range(len(grid))] for _ in range(len(grid[0]))]
+    res[0][0] = grid[0][0]
+    for j in range(1,len(grid[0])):
+        res[0][j] = res[0][j - 1] + grid[0][j]
+    for i in range(1,len(grid)):
+        res[i][0] = res[i - 1][0] + grid[i][0]
+    for i in range(1, len(grid)):
+        for j in range(1, len(grid[0])):
+            res[i][j] = grid[i][j] + min(res[i - 1][j], res[i][j - 1])
+    return res[-1][-1]
 
 
-grid = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+grid= [[1,2,3],[4,5,6]]
 print(minPathSum(grid))
-input()
