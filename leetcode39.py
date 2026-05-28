@@ -1,13 +1,21 @@
-def combinationSum(c, target):
-    sum = 0
+def combinationSum(candidates, target):
     result = []
-    curren = []
 
-    def backtrack():
-        if sum == target:
+    def backtrack(start, current, target):
+        if target == 0:
+            result.append(current[:])
             return
-        
+        for i in range(start, len(candidates)):
+            if candidates[i] > target:
+                break
+            current.append(candidates[i])
+            backtrack(i, current, target - candidates[i])
+            current.pop()
+
+    candidates.sort()
+    backtrack(0, [], target)
+    return result
 
 
 a = [1, 2, 3, 4, 5]
-combinationSum(a, 7)
+print(combinationSum(a, 7))
