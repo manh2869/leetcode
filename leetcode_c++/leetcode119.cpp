@@ -27,6 +27,6 @@ int main()
     {
         cout << x << endl;
     }
-
+	cout<<"con me nha may"<<endl;
     cout << "vai ca loz" << endl;
 }
