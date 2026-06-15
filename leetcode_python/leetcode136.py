@@ -1,10 +1,10 @@
 def singleNumber(nums):
-    nums.sort()
-    for i in range(len(nums) - 1):
-        if nums[i] == nums[i + 1]:
-            i += 1
-        else:
-            return nums[i]
+    ans = 0
+    for i in nums:
+        print(ans)
+        ans ^= i
+    return ans
 
 
-print(singleNumber([4, 1, 2, 1, 2]))
+print(singleNumber([14, 1, 2, 1, 2]))
+# vai lonn khoai vcl
