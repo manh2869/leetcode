@@ -7,4 +7,4 @@ def singleNumber(nums):
 
 
 print(singleNumber([14, 1, 2, 1, 2]))
-# vai lonn khoai vcl
+# vai lonn bai nay khoai vcl

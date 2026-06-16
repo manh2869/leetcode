@@ -15,6 +15,6 @@ def subsetsWithDup(nums):
     dfs(0)
     print(result)
     return result
-?? bai lozz nay
+
 
 subsetsWithDup([3, 1, 2])
