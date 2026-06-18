@@ -16,7 +16,7 @@ vector<int> getRow(int rowIndex)
         curr.push_back(1);
         a.push_back(curr);
     }
-
+    
     return a.back();
 }
 
