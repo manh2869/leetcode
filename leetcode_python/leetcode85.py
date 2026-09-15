@@ -1,4 +1,4 @@
-def largestRectangleArea(heights):
+def maximalRectangle(heights):
     max_a = 0
     stack = []
     for i in range(len(heights)):
@@ -25,4 +25,20 @@ def largestRectangleArea(heights):
     return max_a
 
 
-print(largestRectangleArea([1, 0, 2, 5, 6, 4]))
+def add(matrix):
+    mat = []
+    for i in matrix:
+        for j in i:
+            mat.append(int(j))
+    return mat
+
+
+a = [
+    ["1", "0", "1", "0", "0"],
+    ["1", "0", "1", "1", "1"],
+    ["1", "1", "1", "1", "1"],
+    ["1", "0", "0", "1", "0"],
+]
+
+
+print(add(a))
