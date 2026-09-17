@@ -47,7 +47,6 @@ vector<vector<int>> levelOrderBottom(TreeNode *root)
 };
 int main()
 {
-
     TreeNode root;
     root.val = 3;
     root.left = new TreeNode;
