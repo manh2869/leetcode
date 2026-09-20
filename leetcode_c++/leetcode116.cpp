@@ -19,19 +19,27 @@ Node *connect(Node *root)
     q.push(root);
     while (!q.empty())
     {
-        Node *temp = q.front();
-        q.pop();
-        cout << temp->val << endl;
-        if (temp->left)
+        int n = q.size();
+        Node *prev = NULL;
+        for (int i = 0; i < n; i++)
         {
-            q.push(temp->left);
-            temp->next = q.front();
+            Node *temp = q.front();
+            q.pop();
+            if (prev != NULL)
+            {
+                prev->next = temp;
+            }
+            prev = temp;
+            if (temp->left)
+            {
+                q.push(temp->left);
+            }
+            if (temp->right)
+            {
+                q.push(temp->right);
+            }
         }
-        if (temp->right)
-        {
-            q.push(temp->right);
-            temp->next = q.front();
-        }
+        prev->next = NULL;
     }
 
     return root;
