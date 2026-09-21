@@ -9,11 +9,11 @@ vector<vector<int>> merge(vector<vector<int>> &intervals)
         sort(x.begin(), x.end());
     sort(intervals.begin(), intervals.end());
 
-    for (int i = 0; i < intervals.size(); i++)
-    {
-        // for (int z : x)
-        if (x)
-    }
+    // for (int i = 0; i < intervals.size(); i++)
+    // {
+    //     // for (int z : x)
+    //     if (x)
+    // }
     return intervals;
 }
 int main()
