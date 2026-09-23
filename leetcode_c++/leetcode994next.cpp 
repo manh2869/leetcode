@@ -1,0 +1,41 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+using namespace std;
+int bfs(vector<vector<char>> &grid, int x, int y)
+{
+
+    if (x < 0 || y < 0 || x >= grid.size() || y >= grid[0].size() || check[x][y] == 1 || grid[x][y] == '0')
+    {
+        return 0;
+    }
+    check[x][y] = 1;
+    bfs(grid, check, x + 1, y);
+    bfs(grid, check, x - 1, y);
+    bfs(grid, check, x, y + 1);
+    bfs(grid, check, x, y - 1);
+    return 1;
+}
+int orangesRotting(vector<vector<int>> &grid)
+{
+
+    for (int i = 0; i < grid.size(); i++)
+    {
+        for (int j = 0; j < grid[0].size(); j++)
+        {
+            if (grid[i][j] == 2)
+                bfs(grid, i, j);
+        }
+    }
+
+    return 1;
+}
+int main()
+{
+    vector<vector<int>> grid = {
+        {2, 1, 1, 0, 1},
+        {1, 1, 0, 0, 2},
+        {0, 1, 1, 0, 1},
+        {0, 0, 0, 1, 0}};
+    cout << orangesRotting(grid) << endl;
+}
