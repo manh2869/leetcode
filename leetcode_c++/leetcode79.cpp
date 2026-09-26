@@ -4,25 +4,40 @@
 #include <vector>
 using namespace std;
 
-bool recursion(vector<vector<char>> &board, string word, int x, int y)
+bool recursion(vector<vector<char>> &board, string word, int x, int y, int i, vector<vector<bool>> &visited)
 {
-    if ()
-    {
-    }
-    return 0;
+    if (x < 0 || y < 0 || x >= board.size() || y >= board[0].size() || board[x][y] != word[i])
+        return 0;
+    if (visited[x][y])
+        return false;
+    if (board[x][y] != word[i])
+        return 0;
+    if (i == word.size() - 1)
+        return 1;
+
+    visited[x][y] = true;
+
+    if (recursion(board, word, x + 1, y, i + 1, visited))
+        return true;
+
+    if (recursion(board, word, x - 1, y, i + 1, visited))
+        return true;
+
+    if (recursion(board, word, x, y + 1, i + 1, visited))
+        return true;
+
+    if (recursion(board, word, x, y - 1, i + 1, visited))
+        return true;
+
+    visited[x][y] = false;
+
+    return false;
 }
 
 bool exist(vector<vector<char>> &board, string word)
 {
-    for (int i = 0; i < board.size(); i++)
-    {
-        for (int j = 0; j < board[0].size(); j++)
-        {
-            if (board[i][j] == word[0])
-                recursion(board, word, i, j);
-        }
-    }
-    return 0;
+    vector<vector<bool>> visited(board.size(), vector<bool>(board[0].size(), false));
+    return recursion(board, word, 0, 0, 0, visited);
 }
 int main()
 {
