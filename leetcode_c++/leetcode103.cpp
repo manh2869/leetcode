@@ -17,19 +17,47 @@ vector<vector<int>> zigzagLevelOrder(TreeNode *root)
     vector<vector<int>> t;
     while (!q.empty())
     {
-        TreeNode *temp = q.front();
-        for (int i = 0; i < q.size(); i++)
+        int n = q.size();
+        vector<int> v;
+        for (int i = 0; i < n; i++)
         {
+            TreeNode *temp = q.front();
             q.pop();
             cout << temp->val << endl;
-            if (temp->left)
-                q.push(temp->left);
-            if (temp->right)
-                q.push(temp->right);
+            if (i % 2 == 0)
+            {
+                if (temp->left)
+                {
+                    q.push(temp->left);
+                    v.push_back(temp->val);
+                }
+                if (temp->right)
+                {
+                    q.push(temp->right);
+                    v.push_back(temp->val);
+                }
+            }
+            else
+            {
+                if (temp->right)
+                {
+                    q.push(temp->right);
+                    v.push_back(temp->val);
+                }
+                if (temp->left)
+                {
+                    q.push(temp->left);
+                    v.push_back(temp->val);
+                }
+            }
         }
+        t.push_back(v);
     }
     return t;
 }
+
+
+// this absolute wroong
 int main()
 {
     TreeNode *root = new TreeNode(3);
