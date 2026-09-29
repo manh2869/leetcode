@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stack>
+#include <vector>
 
 using namespace std;
 
@@ -10,20 +11,14 @@ struct TreeNode
     TreeNode *right;
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
-void recoverTree(TreeNode *root)
+bool isBalanced(TreeNode *root, int height)
 {
-    stack<TreeNode *> s;
-    s.push(root);
-    while (!s.empty())
-    {
-        TreeNode *t = s.top();
-        s.pop();
-        cout << t->val << endl;
-        if (t->right)
-            s.push(t->right);
-        if (t->left)
-            s.push(t->left);
-    }
+    if (root == nullptr)
+        return 0;
+    isBalanced(root->left, height + 1);
+
+    isBalanced(root->right, height + 1);
+    return 0;
 }
 int main()
 {
@@ -31,5 +26,6 @@ int main()
     root->left = new TreeNode(1);
     root->right = new TreeNode(4);
     root->right->left = new TreeNode(2);
-    recoverTree(root);
+    root->right->right = new TreeNode(1);
+    cout << isBalanced(root, 0) << endl;
 }
