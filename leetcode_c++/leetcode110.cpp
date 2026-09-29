@@ -11,14 +11,24 @@ struct TreeNode
     TreeNode *right;
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
-bool isBalanced(TreeNode *root, int height)
+
+int dfs(TreeNode *root)
 {
     if (root == nullptr)
         return 0;
-    isBalanced(root->left, height + 1);
-
-    isBalanced(root->right, height + 1);
-    return 0;
+    int l = dfs(root->left);
+    if (l == -1)
+        return -1;
+    int r = dfs(root->right);
+    if (r == -1)
+        return -1;
+    if (abs(l - r) > 1)
+        return -1;
+    return max(l, r) + 1;
+}
+bool isBalanced(TreeNode *root)
+{
+    return dfs(root) != -1;
 }
 int main()
 {
@@ -27,5 +37,5 @@ int main()
     root->right = new TreeNode(4);
     root->right->left = new TreeNode(2);
     root->right->right = new TreeNode(1);
-    cout << isBalanced(root, 0) << endl;
+    cout << isBalanced(root) << endl;
 }
