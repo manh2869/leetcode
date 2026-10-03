@@ -11,6 +11,7 @@ def bfs(maze, start):
         queue.pop(0)
         x = Y[0]
         y = Y[1]
+        maze[x][y] = "P"
         for i in range(4):
             nx = x + mx[i]
             ny = y + my[i]
@@ -27,7 +28,6 @@ def bfs(maze, start):
             visited[nx][ny] = True
             queue.append([nx, ny])
 
-        maze[queue[0][0]][queue[0][1]] = "P"
         for row in maze:
             for x in row:
                 print(x, end=" ")
